@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Restaurants{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>All Cafes</h1>
+
+      <table class="table table-dark table-striped table-hover">
+        <thead>
+          <tr>
+            {% for header in cafes[0] %}
+                  <th scope="col">{{ header }}</th>
+            {% endfor %}
+          </tr>
+        </thead> 
+        <tbody>
+          {% for cafe_list in cafes[1:] %} 
+          <tr>
+            {% for cafe_details in cafe_list %}
+              {% if loop.index == 2 %}
+                  <td scope="row"><a href="{{ cafe_details }}" target="_blank">Map Location</a></td>
+              {% else %}
+                  <td scope="row">{{ cafe_details }}</td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+          {% endfor %} 
+        </tbody>
+      </table>
+
+      <p><a href="/">Return to index page</a></p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
